@@ -3,8 +3,9 @@ import React from 'react';
 // komponente
 import CoinItem from './CoinItem';
 
-// bibl
+//
 import './coins.css';
+import { Link } from 'react-router-dom';
 
 export default function Coins(props) {
   return (
@@ -21,7 +22,9 @@ export default function Coins(props) {
 
         {props.coins.map((coin) => {
           return (
-            <CoinItem coin={coin} />
+            <Link to={`coin/${coin.id}`} key={coin.id}>
+              <CoinItem coin={coin} />
+            </Link>
           );
         })}
       </div>

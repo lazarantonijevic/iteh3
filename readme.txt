@@ -3,6 +3,7 @@
 react-icons
 react-router-dom
 axios
+dompurify
 
 
 -API

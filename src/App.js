@@ -8,6 +8,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Coins from './components/Coins';
 import Navbar from './components/Navbar';
 
+//ruta
+import Coin from './routes/Coin';
+
 function App() {
 
   const [coins, setCoins] = useState([]);
@@ -31,6 +34,7 @@ function App() {
       <Navbar /> 
       <Routes>
         <Route path='/' element={<Coins coins={coins} />} />
+        <Route path='/coin/:coinId' element={<Coin />} />
       </Routes> 
     </BrowserRouter>  
   );
