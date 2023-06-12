@@ -1,21 +1,24 @@
-
-import Navbar from './components/Navbar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CoinItem from './components/CoinItem';
-import axios from 'axios';
-
 import React, { useState, useEffect } from 'react';
+
+// biblioteke
+import axios from 'axios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// komponente
+import Coins from './components/Coins';
+import Navbar from './components/Navbar';
 
 function App() {
 
-  const [coin, setCoinItem] = useState([]);
-  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&order=market_cap_desc&per_page=30&page=1&sparkline=false';
+  const [coins, setCoins] = useState([]);
+  const url =
+    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false';
 
   useEffect(() => {
     axios
       .get(url)
       .then((res) => {
-        setCoinItem(res.data);
+        setCoins(res.data);
         console.log(res.data[0]);
       })
       .catch((err) => {
@@ -27,7 +30,7 @@ function App() {
     <BrowserRouter>
       <Navbar /> 
       <Routes>
-        <Route path='/' element={<CoinItem coin={coin} />} />
+        <Route path='/' element={<Coins coins={coins} />} />
       </Routes> 
     </BrowserRouter>  
   );
